@@ -177,10 +177,11 @@ public class Database {
             stmt.setDouble(4, amount);
         }
     }
-    public static void getHistory(String accNum, Connection connection) throws SQLException {
-        String get = "SELECT * FROM bank.transactions WHERE accNum = ?";
+    public static void getHistory(String accNum, int pin, Connection connection) throws SQLException {
+        String get = "SELECT * FROM bank.transactions WHERE accNum = ? AND pin = ?";
         PreparedStatement statement = connection.prepareStatement(get);
         statement.setString(1,accNum);
+        statement.setInt(2,pin);
         ResultSet rs = statement.executeQuery();
         printRecords(rs);
 
