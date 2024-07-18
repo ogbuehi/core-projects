@@ -28,7 +28,8 @@ public class Main {
             System.out.println("(c) View Balance");
             System.out.println("(d) Withdraw Funds");
             System.out.println("(e) Transfer Funds");
-            System.out.println("(f) Exit");
+            System.out.println("(f) Transaction History")
+            System.out.println("(g) Exit");
 
             option = scanner.next().charAt(0);
             switch (option) {
@@ -57,8 +58,13 @@ public class Main {
                     AccountController.transferFunds(connection,scanner);
                     System.out.println("-".repeat(50));
                     break;
+                case 'f':
+                    System.out.println("-".repeat(50));
+                    AccountController.transactionHistory(connection,scanner);
+                    System.out.println("-".repeat(50));
+                    break;
             }
-        } while (option != 'f');
+        } while (option != 'g');
         System.out.println("Thanks for Banking with us");
     }
 }
