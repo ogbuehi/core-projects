@@ -111,8 +111,13 @@ public class AccountController {
         updateDeposit(receiverAccNum, pin, amount,connection);
         System.out.println("you have made a transfer of #"+amount+" to "+receiverAccNum);
     }
-    public static void transactionHistory(){
-
+    public static void transactionHistory(Connection connection, Scanner scanner){
+         System.out.println("Enter Account Number and Pin to Login to Account");
+        String accNum = scanner.nextLine();
+        int pin = scanner.nextInt();
+        Database.getCustomer(accNum, pin, connection);
+        scanner.nextLine();
+        Database.getHistory(accNum, pin, connection);
     }
     }
 
